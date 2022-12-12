@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cs059-usn-deployment
+  namespace: cs059
+  labels:
+    app: cs059-nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cs059-nginx
+  template:
+    metadata:
+      labels:
+        app: cs059-nginx
+    spec:
+      containers:
+      - name: cs059
+        image: nginx
+        ports:
+        - containerPort: 80
